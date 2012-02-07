@@ -28,6 +28,7 @@
         },
         _options = { frequency: 100 },
         _shakeValue = 0,
+        booYa = false,
         url = 'http://gentle-warrior-7480.herokuapp.com/';
 
         var socket = io.connect(url);
@@ -38,9 +39,12 @@
         socket.on('booya', _finishHim);
 
         function _finishHim() {
-            document.getElementById("shaking").setAttribute("style", "display: none;");
-            document.getElementById("shake_n_bake").setAttribute("class", "");
-            navigator.notification.vibrate(2000);
+            if (!booYa) {
+              document.getElementById("shaking").setAttribute("style", "display: none;");
+              document.getElementById("shake_n_bake").setAttribute("class", "");
+              navigator.notification.vibrate(2000);
+              booYa = true;
+            }
         }
 
         function onSuccess(accel) {
