@@ -1,6 +1,7 @@
 body {
     background-color: #000;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 .hidden {
@@ -9,7 +10,8 @@ body {
 
 #shake_n_bake {
     position: absolute;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
     top: 0;
     left: 0;
     height: 100%;
