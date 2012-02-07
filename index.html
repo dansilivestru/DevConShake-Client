@@ -40,6 +40,7 @@
         function _finishHim() {
             document.getElementById("shaking").setAttribute("style", "display: none;");
             document.getElementById("shake_n_bake").setAttribute("class", "");
+            navigator.notification.vibrate(2000);
         }
 
         function onSuccess(accel) {
@@ -99,7 +100,6 @@
             navigator.accelerometer.watchAcceleration(onSuccess, onError, _options);
             
             // Post updates every second to server.
-            // TODO: only post updates if shake value has changed
             setInterval(function() {
                 socket.emit('shake', {value:_shakeValue});
             }, 1000);
