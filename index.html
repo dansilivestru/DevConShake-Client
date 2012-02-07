@@ -29,7 +29,8 @@
         _options = { frequency: 100 },
         _shakeValue = 0,
         booYa = false,
-        url = 'http://gentle-warrior-7480.herokuapp.com/';
+        url = 'http://gentle-warrior-7480.herokuapp.com/',
+        _shaking;
 
         var socket = io.connect(url);
         socket.on('connect', function() {
@@ -82,7 +83,7 @@
 
             _shakeValue = Math.round(_shakeValue * 10) / 10;
 
-            document.getElementById("shaking").style.color = "#" + getColor(_shakeValue) + getColor(_shakeValue) + getColor(_shakeValue) + ";";
+            _shaking.style.color = "#" + getColor(_shakeValue) + getColor(_shakeValue) + getColor(_shakeValue);
         }
 
         function getColor(ratio) {
@@ -110,7 +111,8 @@
         }
         
         window.addEventListener("load", function () {
-            document.body.style.height = window.screen.height + "px";
+                document.body.style.height = window.screen.height + "px";
+                _shaking = document.getElementById("shaking");
         });
 
         document.addEventListener("deviceready", onDeviceReady, false);
