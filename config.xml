@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.tinyhippos.devconshake"
+        versionCode="1"
+        version   = "1.0.0">
+
+    <name>DevCon Shake!</name>
+
+    <description>
+      Shake n bake baby
+    </description>
+
+    <author>
+      Dan Silivestru, Fil Maj, Michael Brooks
+    </author>
+
+    <preference name="orientation" value="portrait" />
+</widget>
+
