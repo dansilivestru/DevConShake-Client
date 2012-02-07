@@ -82,7 +82,7 @@
 
             _shakeValue = Math.round(_shakeValue * 10) / 10;
 
-            document.getElementById("shaking").setAttribute("style", "color: #" + getColor(_shakeValue) + getColor(_shakeValue) + getColor(_shakeValue) + ";");
+            document.getElementById("shaking").style.color = "#" + getColor(_shakeValue) + getColor(_shakeValue) + getColor(_shakeValue) + ";";
         }
 
         function getColor(ratio) {
