@@ -28,7 +28,7 @@
         },
         _options = { frequency: 100 },
         _shakeValue = 0,
-        url = 'http://10.0.1.4:3000/';
+        url = 'http://gentle-warrior-7480.herokuapp.com/';
 
         var socket = io.connect(url);
         socket.on('connect', function() {
@@ -99,6 +99,7 @@
             navigator.accelerometer.watchAcceleration(onSuccess, onError, _options);
             
             // Post updates every second to server.
+            // TODO: only post updates if shake value has changed
             setInterval(function() {
                 socket.emit('shake', {value:_shakeValue});
             }, 1000);
