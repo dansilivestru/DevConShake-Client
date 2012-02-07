@@ -28,6 +28,7 @@
         },
         _options = { frequency: 100 },
         _shakeValue = 0,
+        booYa = false,
         url = 'http://gentle-warrior-7480.herokuapp.com/';
 
         var socket = io.connect(url);
@@ -38,8 +39,12 @@
         socket.on('booya', _finishHim);
 
         function _finishHim() {
-            document.getElementById("shaking").setAttribute("style", "display: none;");
-            document.getElementById("shake_n_bake").setAttribute("class", "");
+            if (!booYa) {
+              document.getElementById("shaking").setAttribute("style", "display: none;");
+              document.getElementById("shake_n_bake").setAttribute("class", "");
+              navigator.notification.vibrate(2000);
+              booYa = true;
+            }
         }
 
         function onSuccess(accel) {
@@ -77,7 +82,7 @@
 
             _shakeValue = Math.round(_shakeValue * 10) / 10;
 
-            document.getElementById("shaking").setAttribute("style", "color: #" + getColor(_shakeValue) + getColor(_shakeValue) + getColor(_shakeValue) + ";");
+            document.getElementById("shaking").style.color = "#" + getColor(_shakeValue) + getColor(_shakeValue) + getColor(_shakeValue) + ";";
         }
 
         function getColor(ratio) {
@@ -99,7 +104,6 @@
             navigator.accelerometer.watchAcceleration(onSuccess, onError, _options);
             
             // Post updates every second to server.
-            // TODO: only post updates if shake value has changed
             setInterval(function() {
                 socket.emit('shake', {value:_shakeValue});
             }, 1000);
@@ -107,9 +111,6 @@
         
         window.addEventListener("load", function () {
             document.body.style.height = window.screen.height + "px";
-
-            //temp HACK for testing
-            document.getElementById("content").addEventListener("click", _finishHim);
         });
 
         document.addEventListener("deviceready", onDeviceReady, false);
