@@ -42,7 +42,7 @@
         function _finishHim() {
             if (!booYa) {
               document.getElementById("shaking").setAttribute("style", "display: none;");
-              document.getElementById("shake_n_bake").setAttribute("class", "");
+              document.getElementById("img").style.display = 'block';
               navigator.notification.vibrate(2000);
               booYa = true;
             }
@@ -120,7 +120,8 @@
     </script>
     <div id="content">
         <div id="shaking">Shake it good!</div>
-        <div id="shake_n_bake"></div>
+        <img id="img" src="images/shake.jpg" />
     </div>
   </body>
 </html>
+

@@ -4,27 +4,17 @@ body {
     padding: 0;
 }
 
-.hidden {
-    display: none;
-}
-
-#shake_n_bake {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-image: url("../images/shake.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat;
+img {
+  width:100%;
+  display:none;
 }
 
 #shaking {
-    margin: 100px 0 0 0;
+    position: absolute;
+    margin: 30% 0 0 0;
     width: 100%;
-    font-size: 6em;
+    height: 70%;
+    font-size: 3em;
 }
 
 #content {
@@ -34,3 +24,4 @@ body {
     background-color: #000;
     text-align: center;
 }
+
