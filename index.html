@@ -30,11 +30,16 @@
         _shakeValue = 0,
         booYa = false,
         url = 'http://gentle-warrior-7480.herokuapp.com/',
-        _shaking;
+        _shaking,
+        nick;
 
         var socket = io.connect(url);
         socket.on('connect', function() {
             console.log('Socket Connected');
+            nick = prompt("wtf is your name?");
+            if (confirm("do you want to shake it?")) {
+              socket.emit('nick', nick);
+            } else window.close();
         });
 
         socket.on('booya', _finishHim);
@@ -106,7 +111,7 @@
             
             // Post updates every second to server.
             setInterval(function() {
-                socket.emit('shake', {value:_shakeValue});
+                socket.emit('shake', {value:_shakeValue, nick:nick});
             }, 1000);
         }
         
