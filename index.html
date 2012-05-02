@@ -5,7 +5,7 @@
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/styles.css" />
-    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
     <script type="text/javascript" src="js/socket.io.js"></script>
   </head>
   <body>
@@ -36,10 +36,12 @@
         var socket = io.connect(url);
         socket.on('connect', function() {
             console.log('Socket Connected');
-            nick = prompt("wtf is your name?");
-            if (confirm("do you want to shake it?")) {
-              socket.emit('nick', nick);
-            } else window.close();
+            if (!nick) {
+              nick = prompt("wtf is your name?");
+              if (confirm("do you want to shake it?")) {
+                socket.emit('nick', nick);
+              } else window.close();
+            }
         });
 
         socket.on('booya', _finishHim);
